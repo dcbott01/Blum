@@ -26,8 +26,8 @@ Auto Claim Blum
    - Di dalamnya, cari `__telegram_initparam` dan temukan `tgwebappdata`.
    - Ambil nilai `query_id=xxx` (ambil semua nilai ini kecuali `tgwebappnya`).
 
-5. **Paste di tgwebapp.txt**
-   - Buat atau buka file `tgwebapp.txt` dan paste nilai `query_id` yang telah kamu ambil sebelumnya.
+5. **Paste di tokens.txt**
+   - Buat atau buka file `tokens.txt` dan paste nilai `query_id` yang telah kamu ambil sebelumnya.
   
 ## Features
 - Auto Get Token
