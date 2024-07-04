@@ -2,7 +2,7 @@
 # Blum Bot
 Auto Claim Blum
 
-Yescoin Auto Tap/Swipe
+
 
 ## Installation
 
