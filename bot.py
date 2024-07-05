@@ -423,7 +423,7 @@ def print_welcome_message():
     print(Fore.GREEN + Style.BRIGHT + "BLUM BOT")
     print(Fore.GREEN + Style.BRIGHT + "Jajanin dong orang baik :)")
     print(Fore.GREEN + Style.BRIGHT + "0x5bc0d1f74f371bee6dc18d52ff912b79703dbb54")
-    print(Fore.GREEN + Style.BRIGHT + "Update Link: https://github.com")
+    print(Fore.GREEN + Style.BRIGHT + "Update Link: https://github.com/dcbott01/Blum")
 
 
     
