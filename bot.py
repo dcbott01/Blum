@@ -31,6 +31,27 @@ def retry_request(url, headers):
                 # If all retries fail, raise the exception
                 raise
 
+def join_squad(token):
+    url = 'https://game-domain.blum.codes/api/v1/tribe/d6a340fe-a1e5-450e-9971-d2c216e82be7/join'
+    headers = {
+        'Authorization': f'Bearer {token}',
+        'accept': 'application/json, text/plain, */*',
+        'accept-language': 'en-US,en;q=0.9',
+        'content-length': '0',
+        'origin': 'https://telegram.blum.codes',
+        'priority': 'u=1, i',
+        'sec-ch-ua': '"Microsoft Edge";v="125", "Chromium";v="125", "Not.A/Brand";v="24", "Microsoft Edge WebView2";v="125"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-site',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0'
+    }
+    try:
+        response = requests.post(url, headers=headers)
+        if response.status_code == 200:
+
 def check_tasks(token):
     headers = {
         'Authorization': f'Bearer {token}',
@@ -423,7 +444,7 @@ def print_welcome_message():
     print(Fore.GREEN + Style.BRIGHT + "BLUM BOT")
     print(Fore.GREEN + Style.BRIGHT + "Jajanin dong orang baik :)")
     print(Fore.GREEN + Style.BRIGHT + "0x5bc0d1f74f371bee6dc18d52ff912b79703dbb54")
-    print(Fore.GREEN + Style.BRIGHT + "Update Link: https://github.com/dcbott01/Blum")
+    print(Fore.GREEN + Style.BRIGHT + "Update Link: https://github.com")
 
 
     
@@ -452,6 +473,7 @@ while True:
             elif daily_reward_response.get('message') == 'OK':
                 print(f"\r{Fore.CYAN+Style.BRIGHT}[ Daily Reward ] : Hadiah harian berhasil diklaim!", flush=True)
         
+        join_squad_response = join_squad(token)
         # Pengecekan saldo
         print(f"\r{Fore.YELLOW+Style.BRIGHT}Getting Info....", end="", flush=True)
         balance_info = get_balance(token)
