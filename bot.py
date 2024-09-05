@@ -50,40 +50,8 @@ def join_squad(token):
     }
     try:
         response = requests.post(url, headers=headers)
-        if response.status_code == 200:
-
-def check_tasks(token):
-    headers = {
-        'Authorization': f'Bearer {token}',
-        'accept': 'application/json, text/plain, */*',
-        'accept-language': 'en-US,en;q=0.9',
-        'content-length': '0',
-        'origin': 'https://telegram.blum.codes',
-        'priority': 'u=1, i',
-        'sec-ch-ua': '"Microsoft Edge";v="125", "Chromium";v="125", "Not.A/Brand";v="24", "Microsoft Edge WebView2";v="125"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-site',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0'
-    }
-   
-    try:
-        # Retry the request using the retry_request function
-        tasks = retry_request('https://game-domain.blum.codes/api/v1/tasks', headers)
-        for task in tasks:
-            titlenya = task['title']
-            if task['status'] == 'CLAIMED':
-                print(f"{Fore.CYAN+Style.BRIGHT}Task {titlenya} claimed  | Status: {task['status']} | Reward: {task['reward']}")
-            elif task['status'] == 'NOT_STARTED':
-                print(f"{Fore.YELLOW+Style.BRIGHT}Starting Task: {task['title']}")
-                start_task(token, task['id'],titlenya)
-                claim_task(token, task['id'],titlenya)
-            else:
-                print(f"{Fore.CYAN+Style.BRIGHT}Task already started: {task['title']} | Status: {task['status']} | Reward: {task['reward']}")
-    except Exception as e:
-        print(f"{Fore.RED+Style.BRIGHT}\nFailed to get tasks: {e}")
+    except RequestException as e:
+        print(f"{Fore.RED+Style.BRIGHT}Request failed: {e}")
 
 start_time = datetime.datetime.now()  
 
@@ -131,6 +99,7 @@ def check_tasks(token):
             print(f"{Fore.RED+Style.BRIGHT}\nFailed to get tasks")
     except:
         print(f"{Fore.RED+Style.BRIGHT}\nFailed to get tasks {response.status_code} ")
+
 def start_task(token, task_id,titlenya):
     url = f'https://game-domain.blum.codes/api/v1/tasks/{task_id}/start'
     headers = {
@@ -202,7 +171,7 @@ def get_new_token(query_id):
     data = json.dumps({"query": query_id})
 
   
-    url = "https://gateway.blum.codes/v1/auth/provider/PROVIDER_TELEGRAM_MINI_APP"
+    url = "https://user-domain.blum.codes/api/v1/auth/provider/PROVIDER_TELEGRAM_MINI_APP"
 
    
     for attempt in range(3):
@@ -442,10 +411,11 @@ def print_welcome_message():
 
     """)
     print(Fore.GREEN + Style.BRIGHT + "BLUM BOT")
-    print(Fore.GREEN + Style.BRIGHT + "Jajanin dong orang baik :)")
-    print(Fore.GREEN + Style.BRIGHT + "0x5bc0d1f74f371bee6dc18d52ff912b79703dbb54")
-    print(Fore.GREEN + Style.BRIGHT + "Update Link: https://github.com")
-
+    print(Fore.CYAN + Style.BRIGHT + "Jajanin dong orang baik :)")
+    print(Fore.YELLOW + Style.BRIGHT + "0x5bc0d1f74f371bee6dc18d52ff912b79703dbb54")
+    print(Fore.RED + Style.BRIGHT + "Update Link: https://github.com/dcbott01/blum")
+    print(Fore.BLUE + Style.BRIGHT + "Tukang Rename MATI AJA")
+    print(Fore.GREEN + "=====================================")
 
     
 checked_tasks = {}
